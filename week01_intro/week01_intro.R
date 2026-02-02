@@ -48,3 +48,59 @@ y
 # Recode values greater than 4 to 0
 x[x > 4] <- 0
 x
+
+# -- Arithmetic with vectors --
+# Adding 2 to each number in a vector
+2 + c(6,0,9,20,22)
+
+# Multiply each number in the vector by 3
+3 * c(6,0,9,20,22)
+
+# -- Recycling --
+x <- c(3,4,2)
+x+2
+
+# -- Round function --
+x <- c(9.5,16.3,25.1)
+round(x)
+
+# -- Coercion --
+x <- c(0:6)
+class(x)
+as.numeric(x)
+as.logical(x)
+as.character(x)
+x <- as.character(x)
+
+# -- Simulating Data --
+?rnorm
+x <- rnorm(10)
+x <- rnorm(10,20,2)
+summary(x)
+
+# -- Setting the Seed --
+set.seed(1)
+rnorm(5)
+rnorm(5)
+set.seed(1)
+rnorm(5)
+
+# -- Bootstrapping --
+set.seed(1)
+?sample
+sample(c(1:10), 4)
+sample(c(1:10), 10, replace = TRUE)
+
+# -- Matrices -- 
+m <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+m
+
+dim(m)
+nrow(m)
+ncol(m)
+colnames(m) <- c('a', 'b', 'c')
+m[,'b']
+m[2,2]
+m[,2]
+m[1,]
+m[,1:2]
