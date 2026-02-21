@@ -5,6 +5,7 @@
 # This probability is statistical power.
 # ---------------------------------------------------------
 
+# ---- SIMULATION-BASED POWER ----
 # Set parameters for 2 groups (X and Y)
 samplesize <- 200 # sample size (n) per group (total N = 400 for 2 independent groups)
  
@@ -38,5 +39,22 @@ for (i in 1:100) {
 # Visualise distribution of p-values
 hist(pvalues, breaks=20)
 length(pvalues[pvalues<0.05]) # Count significant results
+
 mean(pvalues < 0.05) # Get power estimate
 
+# ----- ANALYTICAL POWER -----
+# Built in R power test functions
+power.t.test(power = .80, 
+             delta = 0.5, # delta = difference in means (in raw units)
+             type = "two.sample")
+
+# pwr Package example
+install.packages("pwr")
+library(pwr)
+
+pwr.t.test(n=100,
+           d = 0.5, 
+           sig.level = 0.05,
+           type = "two.sample")
+
+pwr.t.test(n = 30, d = 0.5, sig.level = 0.05, type = "two.sample")
